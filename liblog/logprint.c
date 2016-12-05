@@ -178,7 +178,11 @@ static android_LogPriority filterPriForTag(
 int android_log_shouldPrintLine (
         AndroidLogFormat *p_format, const char *tag, android_LogPriority pri)
 {
-    if (!strncmp(tag, "AEC_PORT", 8) || !strncmp(tag, "mm-camera", 9))
+    if (!strncmp(tag, "AEC_PORT", 8)
+        || !strncmp(tag, "mm-camera", 9)
+        || !strncmp(tag, "qdhwcomposer", 12)
+        || !strncmp(tag, "sensors_hal_Ctx", 15)
+        || !strncmp(tag, "sensors_hal_Light", 17))
         return 0;
     else
         return pri >= filterPriForTag(p_format, tag);
